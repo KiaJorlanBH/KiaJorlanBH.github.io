@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proposta Comercial – K-Motors KIA</title>
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Proposta comercial editável para K-Motors KIA BH.">
+</head>
+<body class="bg-gray-100 text-gray-900" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;">
+  <div class="max-w-7xl mx-auto p-4 md:p-6">
+    <header class="flex items-center justify-between mb-4 print:hidden">
+      <div class="flex items-center gap-3">
+        <img src="images.png" alt="Jorlan Motors KIA" class="w-16 h-14 object-contain">
+        <div>
+          <h1 class="text-xl font-semibold leading-tight">Proposta Comercial KIA</h1>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-red-600 text-white hover:opacity-90 transition">Imprimir / PDF</button>
+        <button id="btnReset" class="px-4 py-2 rounded-xl bg-white border hover:bg-gray-50">Limpar</button>
+      </div>
+    </header>
+
+    <div id="app" class="grid grid-cols-1 xl:grid-cols-2 gap-4 relative">
+      <!-- FORM -->
+      <section id="form" class="bg-white rounded-2xl shadow border p-4 md:p-6 space-y-6 print:hidden relative z-10">
+        <h2 class="text-lg font-semibold">Dados da Proposta</h2>
+        
+        <!-- Dados Básicos -->
+        <div class="space-y-4">
+          <h3 class="font-medium text-gray-800">Informações Básicas</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="label">Nº da Proposta</span>
+              <input id="propostaNumero" class="input" placeholder="1410894664" />
+            </label>
+            <label class="block">
+              <span class="label">Data Emissão</span>
+              <input id="dataEmissao" class="input" type="date" />
+            </label>
+            <label class="block">
+              <span class="label">Validade</span>
+              <input id="validade" class="input" placeholder="Ex: 15 dias" />
+            </label>
+            <label class="block">
+              <span class="label">Aprovado por</span>
+              <input id="aprovadoPor" class="input" placeholder="K1.OLIV141" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Dados do Cliente -->
+        <div class="space-y-4">
+          <h3 class="font-medium text-gray-800">Dados do Cliente</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block sm:col-span-2">
+              <span class="label">Nome do Cliente</span>
+              <input id="cliente" class="input" placeholder="Nome completo do cliente" />
+            </label>
+            <label class="block">
+              <span class="label">CNPJ/CPF</span>
+              <input id="cnpjCliente" class="input" placeholder="000.000.000-00" />
+            </label>
+            <label class="block">
+              <span class="label">IE</span>
+              <input id="ie" class="input" placeholder="Inscrição Estadual" />
+            </label>
+            <label class="block sm:col-span-2">
+              <span class="label">Endereço</span>
+              <input id="endereco" class="input" placeholder="Rua, nº" />
+            </label>
+            <label class="block">
+              <span class="label">Bairro</span>
+              <input id="bairro" class="input" placeholder="Bairro" />
+            </label>
+            <label class="block">
+              <span class="label">Cidade/UF</span>
+              <input id="cidade" class="input" placeholder="Cidade - UF" />
+            </label>
+            <label class="block">
+              <span class="label">E-mail</span>
+              <input id="email" class="input" type="email" placeholder="cliente@email.com" />
+            </label>
+            <label class="block">
+              <span class="label">Data Nascimento</span>
+              <input id="dataNascimento" class="input" type="date" />
+            </label>
+            <label class="block">
+              <span class="label">Telefone Residencial</span>
+              <input id="telefoneRes" class="input" placeholder="(31) 0000-0000" />
+            </label>
+            <label class="block">
+              <span class="label">Telefone Comercial</span>
+              <input id="telefoneCom" class="input" placeholder="(31) 0000-0000" />
+            </label>
+            <label class="block">
+              <span class="label">Celular</span>
+              <input id="celular" class="input" placeholder="(31) 00000-0000" />
+            </label>
+            <label class="block">
+              <span class="label">Vendedor</span>
+              <input id="vendedor" class="input" placeholder="Nome do vendedor" />
+            </label>
+            <div class="flex gap-4">
+              <label class="flex items-center">
+                <input type="checkbox" id="politicamenteExposto" class="mr-2">
+                <span class="text-sm">É Politicamente Exposto</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" id="servidorPublico" class="mr-2">
+                <span class="text-sm">É Servidor Público</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dados do Veículo -->
+        <div class="space-y-4">
+          <h3 class="font-medium text-gray-800">Dados do Veículo</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="label">Veículo</span>
+              <input id="veiculo" class="input" placeholder="Modelo do veículo" />
+            </label>
+            <label class="block">
+              <span class="label">Ano/Modelo</span>
+              <input id="anoModelo" class="input" placeholder="2024/2025" />
+            </label>
+            <label class="block">
+              <span class="label">Motor</span>
+              <input id="motor" class="input" placeholder="1.0 12V" />
+            </label>
+            <label class="block">
+              <span class="label">Combustível</span>
+              <input id="combustivel" class="input" placeholder="Flex" />
+            </label>
+            <label class="block">
+              <span class="label">Linha</span>
+              <input id="linha" class="input" placeholder="Linha do veículo" />
+            </label>
+            <label class="block">
+              <span class="label">Cor</span>
+              <input id="cor" class="input" placeholder="Cor externa" />
+            </label>
+            <label class="block">
+              <span class="label">Cor Interna</span>
+              <input id="corInterna" class="input" placeholder="Cor interna" />
+            </label>
+            <label class="block">
+              <span class="label">Chassi</span>
+              <input id="chassi" class="input" placeholder="Número do chassi" />
+            </label>
+            <label class="block">
+              <span class="label">Renavam</span>
+              <input id="renavam" class="input" placeholder="Número Renavam" />
+            </label>
+            <label class="block">
+              <span class="label">Nº Motor</span>
+              <input id="numeroMotor" class="input" placeholder="Número do motor" />
+            </label>
+            <label class="block">
+              <span class="label">Placa</span>
+              <input id="placa" class="input" placeholder="ABC-1234" />
+            </label>
+            <label class="block">
+              <span class="label">KM</span>
+              <input id="km" class="input" type="number" placeholder="0" />
+            </label>
+            <label class="block">
+              <span class="label">Pátio</span>
+              <input id="patio" class="input" placeholder="Local do pátio" />
+            </label>
+            <label class="block">
+              <span class="label">Pedido Fábrica</span>
+              <input id="pedidoFabrica" class="input" placeholder="Número pedido" />
+            </label>
+            <label class="block">
+              <span class="label">Previsão Pedido</span>
+              <input id="previsaoPedido" class="input" type="date" />
+            </label>
+            <label class="block">
+              <span class="label">NF Fábrica</span>
+              <input id="nfFabrica" class="input" placeholder="Número NF" />
+            </label>
+            <label class="block">
+              <span class="label">Pedido Comercial</span>
+              <input id="pedidoComercial" class="input" placeholder="Número pedido" />
+            </label>
+            <label class="block">
+              <span class="label">NCM</span>
+              <input id="ncm" class="input" placeholder="Código NCM" />
+            </label>
+            <label class="block">
+              <span class="label">Código Finame</span>
+              <input id="codFiname" class="input" placeholder="Código Finame" />
+            </label>
+            <label class="block">
+              <span class="label">NF Emissão</span>
+              <input id="nfEmissao" class="input" type="date" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Valores e Negociação -->
+        <div class="space-y-4">
+          <h3 class="font-medium text-gray-800">Negociação e Valores</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="label">Valor Tabela (R$)</span>
+              <input id="valorTabela" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Desconto Básico (R$)</span>
+              <input id="descontoBasico" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">ICMS Subst. (+) (R$)</span>
+              <input id="icmsSubst" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Desconto ICMS (-) (R$)</span>
+              <input id="descontoIcms" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">IPI (+) (R$)</span>
+              <input id="ipi" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">FCP - ST (+) (R$)</span>
+              <input id="fcpSt" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Desconto Incondicional (R$)</span>
+              <input id="descontoIncond" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Valor Negociado (R$)</span>
+              <input id="valorNegociado" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Valor Nota Fiscal (R$)</span>
+              <input id="valorNotaFiscal" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Forma de Pagamento -->
+        <div class="space-y-4">
+          <h3 class="font-medium text-gray-800">Forma de Pagamento</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <label class="block">
+              <span class="label">Entrada (R$)</span>
+              <input id="entrada" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Seminovos (R$)</span>
+              <input id="seminovos" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Financiamento (R$)</span>
+              <input id="financiamento" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Financiadora</span>
+              <input id="financiadora" class="input" placeholder="Nome da financiadora" />
+            </label>
+            <label class="block">
+              <span class="label">Plano (meses)</span>
+              <input id="planoMeses" class="input" type="number" placeholder="60" />
+            </label>
+            <label class="block">
+              <span class="label">Índice (%)</span>
+              <input id="indice" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+            <label class="block">
+              <span class="label">Parcela (R$)</span>
+              <input id="parcela" class="input" type="number" step="0.01" placeholder="0,00" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Observações -->
+        <div class="space-y-4">
+          <h3 class="font-medium text-gray-800">Observações</h3>
+          <label class="block">
+            <span class="label">Observação da Proposta</span>
+            <textarea id="observacaoProposta" class="input min-h-[100px]" placeholder="Observações específicas da proposta..."></textarea>
+          </label>
+        </div>
+      </section>
+
+      <!-- PREVIEW -->
+      <section id="previewWrap" class="bg-gray-50 rounded-2xl shadow border p-3 md:p-6 relative z-10">
+        <div id="preview" class="mx-auto bg-white rounded-xl border print:shadow-none print:border-0 relative shadow-sm" style="width: 100%; max-width: 210mm; height: auto; min-height: auto;">
+          <!-- Header -->
+          <div class="p-6 border-b flex items-start justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <img src="images.png" alt="Jorlan Motors KIA" class="w-24 h-20 object-contain">
+              <div>
+                <h3 class="text-xl font-semibold leading-tight">KIA Motors 141 - BH</h3>
+                <p class="text-xs text-gray-600">CNPJ: 58.274.539/0001-19</p>
+                <p class="text-xs text-gray-600">AV. PRESIDENTE ANTONIO CARLOS, 7951, BELO HORIZONTE - MG</p>
+                <p class="text-xs text-gray-600">Fone: (31) 2101-5000</p>
+              </div>
+            </div>
+            <div class="text-right text-sm">
+              <div class="font-semibold">PROPOSTA COMERCIAL</div>
+              <div>Nº: <span id="pv-propostaNumero" class="font-medium">—</span></div>
+              <div>Emissão: <span id="pv-dataEmissao">—</span></div>
+              <div>Validade: <span id="pv-validade">—</span></div>
+              <div class="text-xs">Aprovada por: <span id="pv-aprovadoPor">—</span></div>
+            </div>
+          </div>
+
+          <!-- Dados do Cliente -->
+          <div class="p-6 border-b">
+            <h4 class="text-sm font-semibold mb-3 uppercase text-gray-700">Dados do Cliente</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <div><strong>Cliente:</strong> <span id="pv-cliente">—</span></div>
+                <div><strong>CNPJ/CPF:</strong> <span id="pv-cnpjCliente">—</span></div>
+                <div><strong>IE:</strong> <span id="pv-ie">—</span></div>
+                <div><strong>End.:</strong> <span id="pv-endereco">—</span></div>
+                <div><strong>Bairro:</strong> <span id="pv-bairro">—</span></div>
+                <div><strong>Cidade/UF:</strong> <span id="pv-cidade">—</span></div>
+              </div>
+              <div>
+                <div><strong>E-mail:</strong> <span id="pv-email">—</span></div>
+                <div><strong>Dt. Nascimento:</strong> <span id="pv-dataNascimento">—</span></div>
+                <div><strong>Fone Res.:</strong> <span id="pv-telefoneRes">—</span></div>
+                <div><strong>Fone Com.:</strong> <span id="pv-telefoneCom">—</span></div>
+                <div><strong>Fone Cel.:</strong> <span id="pv-celular">—</span></div>
+                <div><strong>Vendedor:</strong> <span id="pv-vendedor">—</span></div>
+              </div>
+            </div>
+            <div class="mt-2 text-sm">
+              <span id="pv-politicamenteExposto" class="hidden">É Politicamente Exposto: Sim</span>
+              <span id="pv-servidorPublico" class="hidden ml-4">É Servidor Público: Sim</span>
+            </div>
+          </div>
+
+          <!-- Dados do Veículo -->
+          <div class="p-6 border-b">
+            <h4 class="text-sm font-semibold mb-3 uppercase text-gray-700">Dados do Veículo</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <div><strong>Veículo:</strong> <span id="pv-veiculo">—</span></div>
+                <div><strong>Ano/Modelo:</strong> <span id="pv-anoModelo">—</span></div>
+                <div><strong>Motor:</strong> <span id="pv-motor">—</span></div>
+                <div><strong>Combustível:</strong> <span id="pv-combustivel">—</span></div>
+                <div><strong>Linha:</strong> <span id="pv-linha">—</span></div>
+                <div><strong>Cor:</strong> <span id="pv-cor">—</span></div>
+                <div><strong>Cor Interna:</strong> <span id="pv-corInterna">—</span></div>
+                <div><strong>Chassi:</strong> <span id="pv-chassi">—</span></div>
+                <div><strong>Renavam:</strong> <span id="pv-renavam">—</span></div>
+              </div>
+              <div>
+                <div><strong>Nº Motor:</strong> <span id="pv-numeroMotor">—</span></div>
+                <div><strong>Placa:</strong> <span id="pv-placa">—</span></div>
+                <div><strong>KM:</strong> <span id="pv-km">—</span></div>
+                <div><strong>Pátio:</strong> <span id="pv-patio">—</span></div>
+                <div><strong>Pedido Fábrica:</strong> <span id="pv-pedidoFabrica">—</span></div>
+                <div><strong>Previsão Ped.:</strong> <span id="pv-previsaoPedido">—</span></div>
+                <div><strong>NF Fábrica:</strong> <span id="pv-nfFabrica">—</span></div>
+                <div><strong>Pedido Comercial:</strong> <span id="pv-pedidoComercial">—</span></div>
+                <div><strong>NCM:</strong> <span id="pv-ncm">—</span> <strong>Cód. Finame:</strong> <span id="pv-codFiname">—</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Valores -->
+          <div class="p-6 border-b">
+            <h4 class="text-sm font-semibold mb-3 uppercase text-gray-700">Negociação e Valores</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <div><strong>Valor Tabela:</strong> R$ <span id="pv-valorTabela">0,00</span></div>
+                <div><strong>Desconto Básico:</strong> R$ <span id="pv-descontoBasico">0,00</span></div>
+                <div><strong>ICMS Subst. (+):</strong> R$ <span id="pv-icmsSubst">0,00</span></div>
+                <div><strong>IPI (+):</strong> R$ <span id="pv-ipi">0,00</span></div>
+                <div><strong>FCP - ST (+):</strong> R$ <span id="pv-fcpSt">0,00</span></div>
+              </div>
+              <div>
+                <div><strong>Desconto ICMS (-):</strong> R$ <span id="pv-descontoIcms">0,00</span></div>
+                <div><strong>Desconto Incond.:</strong> R$ <span id="pv-descontoIncond">0,00</span></div>
+                <div class="font-semibold text-base mt-2">
+                  <div><strong>Valor Negociado:</strong> R$ <span id="pv-valorNegociado">0,00</span></div>
+                  <div><strong>Valor Nota Fiscal:</strong> R$ <span id="pv-valorNotaFiscal">0,00</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Forma de Pagamento -->
+          <div class="p-6 border-b">
+            <h4 class="text-sm font-semibold mb-3 uppercase text-gray-700">Forma de Pagamento</h4>
+            <div class="grid grid-cols-3 gap-4 text-sm">
+              <div>
+                <div><strong>Entrada:</strong> R$ <span id="pv-entrada">0,00</span></div>
+                <div><strong>Seminovos:</strong> R$ <span id="pv-seminovos">0,00</span></div>
+                <div><strong>Financiamento:</strong> R$ <span id="pv-financiamento">0,00</span></div>
+              </div>
+              <div>
+                <div><strong>Financiadora:</strong> <span id="pv-financiadora">—</span></div>
+                <div><strong>Plano:</strong> <span id="pv-planoMeses">—</span> meses</div>
+                <div><strong>Índice:</strong> <span id="pv-indice">—</span>%</div>
+              </div>
+              <div>
+                <div><strong>Parcela:</strong> R$ <span id="pv-parcela">0,00</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Observações -->
+          <div class="p-6 border-b">
+            <h4 class="text-sm font-semibold mb-3 uppercase text-gray-700">Observações da Proposta</h4>
+            <div class="text-sm leading-relaxed">
+              <div id="pv-observacaoProposta" class="mb-3 whitespace-pre-wrap">—</div>
+              <div class="text-xs text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>IMPORTANTE:</strong></p>
+                <p class="mb-1">• Crédito sujeito a aprovação de cadastro pela instituição financeira (Bancos).</p>
+                <p class="mb-1">• O veículo somente será entregue ao cliente após compensação integral do pagamento.</p>
+                <p class="mb-1">• Alteradas as condições de pagamento será alterado também o preço do veículo e possíveis cortesias.</p>
+                <p class="mb-1">• Após o faturamento e antes do emplacamento e/ou retirada do veículo, é facultada a desistência, obrigando-se o cliente ao pagamento de multa no valor de R$ 2.000,00. <strong>CIENTE_____________</strong></p>
+                <p class="mb-1">• Após o emplacamento e antes da entrega ao comprador, é facultado a desistência, obrigando-se ao pagamento de multa correspondente a 10% (dez por cento) do preço do veículo. <strong>CIENTE_____________</strong></p>
+                <p class="mb-1">• Despesas com cancelamentos de financiamentos correm por conta do comprador.</p>
+                <p class="mb-1">• Veículos Usados recebidos em troca terão nova avaliação quando da entrega do mesmo à concessionária em dia diferente da data em que foi avaliado e deverão estar livres de multas, efeitos suspensivos, perda total, impedimentos no ato da entrega a empresa. Ações na justiça em nome do proprietário, que possam a ocasionar futuro impedimento judicial serão motivo de recusa no recebimento do carro usado. Veículos blindados não serão aceitos como parte de pagamento na compra do veículo zero km.</p>
+                <p class="mb-1">• O serviço de despachante é opcional. Sendo contratado pelo cliente, o seu valor já está incluído nesta proposta no item "emplacamento", juntamente com as despesas cobradas pelo Detran, as quais estão disponíveis no site do órgão, de forma detalhada. Não estão incluídas outras despesas não relacionadas ao emplacamento, como, por exemplo, IPVA, DPVAT e taxa de gravame. Caso não seja contratado o serviço de despachante, o cliente isenta a concessionária em todos os aspectos por essa decisão, comprometendo-se a fazer o emplacamento dentro do prazo legal, e obrigatoriamente no Estado de Minas Gerais. De toda forma, em caso de venda total ou parcialmente financiada (ou consórcio), a retirada do veículo fica condicionada à comprovação de que o gravame está ativo, o qual deve ter sido efetivado no registro do bem, em MG.</p>
+                <p class="mb-1">• Reconheço e tenho ciência que a concessão de isenção do IPVA está sujeita ao disposto na lei distrital nº 4.733 de 29 de dezembro de 2011.</p>
+                <p class="mb-1">• Declarações em conformidade com as Leis 12.741/2012 e 13.111/2015: o cliente declara que foi informado de que o veículo adquirido não apresenta débitos conhecidos de multas, taxas e impostos, bem como não possui registros conhecidos de furto, roubo ou de gravame, não havendo nada que limite ou impeça sua livre circulação. O cliente declara-se ciente de que as informações sobre os tributos incidentes constam da Nota Fiscal. Eventuais exceções a esta regra constam em documento apartado, devidamente assinado pelo cliente na concretização da venda.</p>
+                <p class="mb-1">• Se o veículo ZERO KM estiver com preço reduzido em função do desconto previsto na MP 1.175/2023, a validade da proposta fica condicionada à aplicação de tal desconto, pela Montadora, no momento do faturamento do veículo para a Concessionária. Caso a Concessionária não consiga obter o desconto a ser repassado e o cliente não concorde em efetuar o pagamento da diferença correspondente, a compra e venda será considerada inexistente e não haverá ônus para nenhuma das partes.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assinaturas -->
+          <div class="p-6">
+            <div class="grid grid-cols-4 gap-4 text-center text-sm">
+              <div class="border-t pt-2">
+                <div>Financeiro</div>
+              </div>
+              <div class="border-t pt-2">
+                <div>Crédito</div>
+              </div>
+              <div class="border-t pt-2">
+                <div>Gerência</div>
+              </div>
+              <div class="border-t pt-2">
+                <div>Diretoria</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-8 mt-8 text-center text-sm">
+              <div class="border-t pt-2">
+                <div><strong>VENDEDOR</strong></div>
+                <div id="pv-vendedorAssinatura" class="mt-2">—</div>
+              </div>
+              <div class="border-t pt-2">
+                <div><strong>CLIENTE</strong></div>
+                <div id="pv-clienteAssinatura" class="mt-2">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="kia-script.js"></script>
+</body>
+</html>

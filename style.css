@@ -1,0 +1,467 @@
+/* Layout de impressão A4 e estilos utilitários modernos */
+body {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #f5f5dc;
+}
+
+.a4 { 
+  width: 100%;
+  max-width: 210mm; 
+  height: auto;
+  min-height: unset;
+  background: transparent;
+}
+
+@media (min-width: 1024px) {
+  .a4 { 
+    transform-origin: top left;
+    transition: all 0.3s ease;
+  }
+}
+
+/* Responsividade para tablets */
+@media (max-width: 1279px) {
+  #app {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  #previewWrap {
+    order: 2;
+  }
+  
+  #form {
+    order: 1;
+  }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .max-w-7xl {
+    padding: 0.5rem !important;
+  }
+  
+  #form, #previewWrap {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+  
+  .input {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .label {
+    font-size: 0.75rem !important;
+  }
+  
+  header {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    text-align: center !important;
+  }
+  
+  header .flex:first-child {
+    justify-content: center !important;
+  }
+  
+  button {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px !important;
+  }
+  
+  #preview {
+    transform: scale(0.8) !important;
+    transform-origin: top center !important;
+  }
+  
+  .grid.grid-cols-1.sm\\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .grid.grid-cols-1.sm\\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .input {
+    font-size: 0.75rem !important;
+    padding: 0.5rem !important;
+  }
+  
+  h1, h2, h3 {
+    font-size: 1rem !important;
+  }
+  
+  h4 {
+    font-size: 0.875rem !important;
+  }
+}
+
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  #form, .print\:hidden { display: none !important; }
+  #previewWrap { box-shadow: none !important; border: none !important; }
+  .a4 { width: 210mm !important; min-height: 297mm !important; height: auto !important; }
+}
+
+/* Inputs modernos com tema preto e bege */
+.input {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid #d4af37;
+  background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+  color: #f5f5dc;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(245, 245, 220, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+}
+
+.input::placeholder {
+  color: #a0a0a0;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #f5f5dc;
+  box-shadow: 
+    0 0 0 3px rgba(245, 245, 220, 0.2),
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(245, 245, 220, 0.2);
+  transform: translateY(-1px);
+  background: linear-gradient(145deg, #333333 0%, #2a2a2a 100%);
+}
+
+.input:hover {
+  border-color: #dcc76f;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(245, 245, 220, 0.1);
+}
+
+/* Labels modernos com tema bege */
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #f5f5dc;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Prevenção de sobreposição com design moderno */
+#app > section {
+  position: relative;
+  z-index: 10;
+}
+
+#form, #previewWrap {
+  overflow: visible;
+  isolation: isolate;
+  backdrop-filter: blur(10px);
+}
+
+/* Remover qualquer altura forçada do preview */
+#preview {
+  height: auto !important;
+  min-height: auto !important;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Garantir que não há espaço em branco */
+#previewWrap {
+  height: auto;
+  min-height: auto;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border: 1px solid #d4af37;
+}
+
+/* Estilos modernos para formulário com tema escuro */
+#form {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border: 1px solid #d4af37;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  color: #f5f5dc;
+}
+
+/* Botões modernos com cores mais escuras */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: #1a1a1a !important;
+  text-shadow: none !important;
+}
+
+/* Botão de imprimir com tema dourado */
+button[onclick*="print"] {
+  background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%) !important;
+  border: 1px solid #f5f5dc !important;
+  color: #1a1a1a !important;
+  font-weight: 600;
+}
+
+button[onclick*="print"]:hover {
+  background: linear-gradient(135deg, #f5f5dc 0%, #d4af37 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão de reset com tema escuro */
+#btnReset {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%) !important;
+  border: 1px solid #d4af37 !important;
+  color: #f5f5dc !important;
+}
+
+#btnReset:hover {
+  background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%) !important;
+  border-color: #f5f5dc !important;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Headers modernos com cores mais escuras e visíveis */
+h1, h2, h3, h4 {
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Títulos do formulário com destaque */
+#form h1, #form h2, #form h3, #form h4 {
+  color: #f5f5dc;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Headers específicos do preview com cores neutras */
+#preview h1, #preview h2, #preview h3, #preview h4,
+#preview .font-semibold, #preview strong {
+  color: #000000 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  text-shadow: none !important;
+}
+
+/* Text colors do preview */
+#preview {
+  color: #000000;
+}
+
+#preview .text-gray-600 {
+  color: #666666 !important;
+}
+
+#preview .text-gray-700 {
+  color: #333333 !important;
+}
+
+/* Checkboxes modernos com tema dourado */
+input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.375rem;
+  border: 2px solid #d4af37;
+  background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+  border-color: #f5f5dc;
+}
+
+/* Animações e efeitos modernos */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Efeito de carregamento moderno com tema escuro */
+.loading {
+  background: linear-gradient(
+    90deg,
+    #1f1f1f 25%,
+    #2a2a2a 50%,
+    #1f1f1f 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Cards com glassmorphism escuro */
+.glass {
+  background: rgba(42, 42, 42, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 245, 220, 0.18);
+}
+
+/* Scrollbar moderna com tema escuro */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f1f1f;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #f5f5dc 0%, #d4af37 100%);
+}
+
+/* Efeitos hover para seções com tema escuro */
+#form:hover, #previewWrap:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 25px 30px -5px rgba(0, 0, 0, 0.4),
+    0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  border-color: #f5f5dc;
+}
+
+/* Textarea moderna com tema escuro */
+textarea.input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Seleção de texto moderna com tema dourado */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #f5f5dc;
+}
+
+/* Texto adicional para melhor contraste */
+.text-gray-600 {
+  color: #a0a0a0 !important;
+}
+
+.text-gray-700 {
+  color: #d4af37 !important;
+}
+
+.text-gray-900 {
+  color: #f5f5dc !important;
+}
+
+/* Override completo para o preview - cores neutras e sólidas */
+#preview * {
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+#preview, #preview div, #preview p, #preview span {
+  color: #000000 !important;
+}
+
+#preview .text-xs {
+  color: #666666 !important;
+}
+
+#preview .text-sm {
+  color: #333333 !important;
+}
+
+#preview .uppercase {
+  color: #333333 !important;
+}
+
+/* Garantir que bordas e backgrounds do preview permaneçam claros */
+#preview {
+  background: #ffffff !important;
+}
+
+/* === RESPONSIVIDADE MOBILE APRIMORADA === */
+
+/* Responsividade para preview em mobile */
+@media (max-width: 768px) {
+  #previewWrap {
+    overflow-x: auto !important;
+  }
+  
+  #preview {
+    min-width: 300px !important;
+    transform: scale(0.7) !important;
+    transform-origin: top left !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #preview {
+    transform: scale(0.6) !important;
+    min-width: 280px !important;
+  }
+  
+  #previewWrap {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Melhorar acessibilidade touch */
+@media (hover: none) and (pointer: coarse) {
+  .input, button, input[type="checkbox"] {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+  }
+  
+  button:hover {
+    transform: none !important;
+  }
+  
+  .input:hover {
+    transform: none !important;
+  }
+}
+
+/* Orientação landscape em mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  #app {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  #preview {
+    transform: scale(0.5) !important;
+  }
+}
